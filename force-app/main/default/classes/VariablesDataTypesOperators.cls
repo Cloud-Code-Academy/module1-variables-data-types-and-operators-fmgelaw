@@ -260,7 +260,7 @@ public with sharing class VariablesDataTypesOperators {
 
         Double celsius = (fahrenheit - SUBTRACT_FACTOR) * MULTIPLY_FACTOR / DIVIDE_FACTOR;
     
-        return Celsius; // Replace null with the variable you used to store the result
+        return celsius; // Replace null with the variable you used to store the result
     }
 
     
