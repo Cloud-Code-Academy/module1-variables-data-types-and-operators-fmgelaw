@@ -31,7 +31,8 @@ public with sharing class VariablesDataTypesOperators {
      * @param b The second number.
      * @return The sum of the two numbers, or null if either number is null.
      */
-    
+    private static final Integer MILLISECONDS_PER_MINUTE = 60000; // Make this value a constant
+
     public static Integer addition(Integer a, Integer b) { 
         if (a == null || b == null) { 
             return null;
@@ -91,11 +92,7 @@ public with sharing class VariablesDataTypesOperators {
      * @return True if the number is even, False otherwise.
      */
     public static Boolean isEven(Integer num) {
-        if((Math.mod(num, 2)==0)){
-            return true;
-        } else  {
-            return false;
-        }
+        return Math.mod(num,2) == 0;
        // return null; // Replace null with the variable you used to store the result
     }
 
@@ -174,7 +171,7 @@ public with sharing class VariablesDataTypesOperators {
      * @return The number of milliseconds equivalent to the given number of minutes.
      */
     
-    private static final Integer MILLISECONDS_PER_MINUTE = 60000; // Make this value a constant
+    
     public static Integer convertMinutesToMilliseconds(Integer minutes) {
         Integer milliseconds = minutes * MILLISECONDS_PER_MINUTE;
         return milliseconds; // Replace null with the variable you used to store the result
@@ -279,7 +276,7 @@ public with sharing class VariablesDataTypesOperators {
         Double divisionResult = a/b;
 
         // Write the code for type casting the divisionResult to an Integer
-        Integer roundedResult = (Integer)divisionResult;
+        Integer roundedResult = Integer.valueOf(divisionResult);
         return roundedResult; // Replace null with the variable you used to store the result
     }
 
@@ -294,7 +291,9 @@ public with sharing class VariablesDataTypesOperators {
      */
     public static Decimal calculateWeeklyPaycheck(Decimal hourlyRate, Double numberOfHours) {
         // Calculate the weekly paycheck using the formula: rate multiplied by hours
-        return hourlyRate * numberOfHours; // Replace null with the variable you used to store the result
+        //In Apex, multiplying a Decimal by a Double will result in a Double. Store the result in a Decimal to tell the system explicitly what to return
+        Decimal weeklyPaycheck = hourlyRate * numberOfHours;
+        return weeklyPaycheck; // Replace null with the variable you used to store the result
     }
 
     /**
@@ -308,7 +307,8 @@ public with sharing class VariablesDataTypesOperators {
      * @return A Decimal representing the monthly paycheck.
      */
     public static Decimal calculateMonthlyPaycheck(Decimal hourlyRate, Double numberOfHours) {
-        return 4 * hourlyRate * numberOfHours; // Replace null with the variable you used to store the result
+        final Integer NUMBER_OF_WEEKS = 4;
+        return NUMBER_OF_WEEKS * hourlyRate * numberOfHours; // Replace null with the variable you used to store the result
     }
 
     /**
